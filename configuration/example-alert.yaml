@@ -1,0 +1,26 @@
+name: example alert
+type: frequency
+index: project.elastalert.*
+num_events: 1
+
+timeframe:
+    minutes: 1
+
+filter:
+- query:
+    query_string:
+      query: "message: Hello"
+
+#SMT
+smtp_host: '<SMTP_HOST'
+smtp_port: 25
+
+from_addr: 'dev@<MAILSERVER>'
+
+# (Required)
+# The alert is use when a match is found
+alert:
+- "email"
+
+email:
+- "<EMAILADDRESS>"
